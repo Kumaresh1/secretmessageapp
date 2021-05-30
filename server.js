@@ -19,7 +19,7 @@ app.get('/',(req,res)=>
     
     res.render('index',{
         gid:cid,
-        withoutid:"http://localhost:3000/viewmessages?id="
+        withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id="
     })
 })
 
