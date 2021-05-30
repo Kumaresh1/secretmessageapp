@@ -6,6 +6,21 @@ const Cryptr = require('cryptr');
 
 var customId = require("custom-id");
 
+var currentTime = new Date();
+
+var currentOffset = currentTime.getTimezoneOffset();
+
+var ISTOffset = 330;   // IST offset UTC +5:30 
+
+var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+
+// ISTTime now represents the time in IST coordinates
+
+var hoursIST = ISTTime.getHours()
+var minutesIST = ISTTime.getMinutes()
+console.log(ISTTime,ISTTime.getHours());
+
+var ist_time=hoursIST+":"+minutesIST+":"+ISTTime.getSeconds();
 route.post('/getmessage', async (req, res) => {
 
   console.log("Name : ",req.body.Name);
@@ -33,7 +48,7 @@ var minutes = nowdate.getMinutes()
     let data = {};
     data.ID = ID;
     data.UserID = ID;
-    data.Time=time;
+    data.Time=ist_time;
     data.Password=ID[0]+ID[2]+user_name+ID[3];
     data.Message=[];
 
