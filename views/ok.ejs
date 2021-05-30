@@ -28,13 +28,15 @@ function myFunction() {
 function usercopy() {
   var copyText = document.getElementById("linkuser");
 
+  window.location.href = copyText.value;
+
   copyText.select();
   copyText.setSelectionRange(0, 99999); 
 
   document.execCommand("copy");
 
   
-  alert("Link copied ! Use this to view messages in future ");
+  //alert("Link copied ! Use this to view messages in future ");
 }
 
 
@@ -86,6 +88,11 @@ function usercopy() {
         <br>
         <p>Share this link with your friends and collect exciting Anonymous Messages
         </p>
+
+        <div class="d-grid gap-2 ">
+          <button type="button" onclick="usercopy()" class="btn  btn-lg btn-block lessfont " style="background-color: darkorange;"><i class="fa fa-home"></i>View your message from friends</button>
+          <br>
+          </div>
     </div>
     
     <div >
