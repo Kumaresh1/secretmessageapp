@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,43 +13,46 @@
 
   </head>
 
+
   <script>
 
-setTimeout(function(){ 
-    document.getElementById("sent").style.display="none";
- }, 3000);
-
-  </script>
-<body>
+    setTimeout(function(){ 
+        document.getElementById("sent").style.display="none";
+     }, 3000);
+    
+      </script>
+  <body>
   
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-md">
-          <a class="navbar-brand" href="#">Navbar</a>
+    
+  <nav class="navbar navbar-expand-lg navbar-light  headbar ">
+    <div class="container-md headbar">
+      <a class="navbar-brand" href="#" style="color: white;font-weight: bolder;">Secret Message</a>
 
 <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Login</a>
-  </li>
-  <li class="nav-item">
-    <a class=" btn " href="#">Signup</a>
-  </li>
- 
+<li class="nav-item">
+<a class="nav-link  loginbtn" aria-current="page" href="#" style="">Login</a>
+</li>
+<li class="nav-item">
+<a class=" btn " href="#" ></a>
+</li>
+
 </ul>
 
 
-        </div>
-      </nav>
+    </div>
+  </nav>
+  
       <br>
-      <div class="container-md" style="  box-shadow:3px 3px 5px 6px #ccc;
-      width:22rem;">
+      <div class="container-md" style="box-shadow:3px 3px 5px 6px #ccc;width:22rem;">
        <div style="border-bottom:2px solid black;text-align: center;">
-
+       
 <div style="background-color: darkgreen;color:white;width:22rem;margin-left: -12px;" id="sent">
-<p>Message sent !</p>
-</div>
+  <p>Message sent !</p>
+  </div>
+        <br>
 
-        <h2>Secret Message </h2><br>
+        <h2>Secret Message </h2><br><br>
 
         <p>Get anonymous message from your friends and family.</p>
     </div>
@@ -83,4 +88,17 @@ setTimeout(function(){
 
       </div>
 </body>
+
+<style>
+
+  .headbar{
+        background-color: #647af5;
+       
+      }
+
+      .loginbtn{
+  color: white;border: 1px solid white;
+  visibility: hidden;
+}
+  </style>
 </html>
