@@ -17,28 +17,59 @@ function myFunction() {
   var copyText = document.getElementById("linkwithid");
 
   copyText.select();
-  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  copyText.setSelectionRange(0, 99999); 
 
   document.execCommand("copy");
 
   
-  alert("Copied the text: " + copyText.value);
+  alert("Link Copied ! Share it with your friends");
 }
+
+function usercopy() {
+  var copyText = document.getElementById("linkuser");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); 
+
+  document.execCommand("copy");
+
+  
+  alert("Link copied ! Use this to view messages in future ");
+}
+
+
+
+        function facebook_share(URLFORM) {
+            
+            var linkShare = URLFORM;
+            window.open(`https://www.addtoany.com/add_to/facebook?linkurl=${ linkShare }`, "_blank",
+                "noreferrer");
+        }
+
+        
+
+        function whatsapp_share(URLFORM) {
+            
+            window.open("whatsapp://send?text=%E2%9C%89%EF%B8%8F%F0%9F%92%AC%F0%9F%92%8C%0D%0ASend+Secret+Message+to+%2Akk%2A%0D%0A%F0%9F%A4%A9+I+will+never+know+who+sent+me+which+message+%F0%9F%A4%94%0D%0AIt%27s+fun%2C+Try+here+%F0%9F%91%89+"+URLFORM, "_blank");
+        }
+    
+
+
 </script>
 
-  <body>
+  <body >
   
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-md">
-          <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-light  headbar ">
+        <div class="container-md headbar">
+          <a class="navbar-brand" href="#" style="color: white;font-weight: bolder;">Secret Message</a>
 
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Login</a>
+    <a class="nav-link  loginbtn" aria-current="page" href="#" style="">Login</a>
   </li>
   <li class="nav-item">
-    <a class=" btn " href="#">Signup</a>
+    <a class=" btn " href="#" ></a>
   </li>
  
 </ul>
@@ -63,9 +94,9 @@ function myFunction() {
              
             </div>
             <div class="d-grid gap-2 ">
-                <button type="button" onclick="myFunction()" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-copy"></i>Click to Copy</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-whatsapp"></i>Share to Whatsapp</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-facebook"></i>Share to facebook</button>
+                <button type="button" onclick="myFunction()" class="btn  btn-lg btn-block lessfont Copy"><i class="fa fa-copy"></i>Click to Copy</button>
+                <button type="button" onclick="whatsapp_share('<%=URLFORM%>')" class="btn  btn-lg btn-block lessfont Whatsapp"><i class="fa fa-whatsapp"></i>Share to Whatsapp</button>
+                <button type="button" onclick="facebook_share('<%=URLFORM%>')" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-facebook"></i>Share to facebook</button>
 
                 </div>
 <br>
@@ -85,7 +116,8 @@ function myFunction() {
 <p>Use this Link to view your messages later</p>
       <input type="text" class="form-control" id="linkuser" aria-describedby="emailHelp"
       value="<%=URLFORM2%>">
-
+<br>
+      <button class="cpybtn" onclick="usercopy()">Click to Copy Above Link</button>
     </div>
     <br>      </div>
       <br><br><br>
@@ -105,7 +137,7 @@ function myFunction() {
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">    </h5>
-                <small><%= message.Date.slice(4,24) %></small>
+                <small><%= message.Date.slice(4,15) %> <%= time %></small>
               </div>
               <span class="mb-1">
                 <%= message.a %>
@@ -136,6 +168,45 @@ function myFunction() {
         float:left;
     
         font-size: 20px;
+    }
+
+    .Whatsapp{
+      background-color:darkgreen;
+      color:white;
+    }
+    .Whatsapp:hover{
+      border:1px solid darkgreen;
+      background-color:white;
+      color:darkgreen;
+    }
+    .Copy{
+      background-color: brown;
+      color:white;
+    }
+    .Copy:hover{
+      background-color: brown;
+    }
+    .headbar{
+      background-color: #647af5;
+     
+    }
+
+.loginbtn{
+  color: white;border: 1px solid white;
+}
+
+    .loginbtn:hover{
+background-color: white;
+color:#647af5;
+    }
+
+    .cpybtn{
+      background-color: #1c1c1d;
+      border:none;
+      color:whitesmoke;
+      padding: 5px;
+      width:100%;
+      border-radius: 5px;
     }
 </style>
 </html>

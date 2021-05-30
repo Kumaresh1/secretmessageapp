@@ -14,13 +14,26 @@ route.post('/getmessage', async (req, res) => {
 let out=[];
 
   out=await User.find({"ID":ID});
-    let URL_ID="http://localhost:3000/sendmessage?id="+ID;
-    let URL_USER="http://localhost:3000/viewmessages?id="+ID;
-  let nowdate=new Date();
+  
+  //https://secretmsgs.herokuapp.com/
+  //  let URL_ID="http://localhost:3000/sendmessage?id="+ID;
+    //let URL_USER="http://localhost:3000/viewmessages?id="+ID;
+
+    let URL_ID="https://secretmsgs.herokuapp.com/sendmessage?id="+ID;
+    let URL_USER="https://secretmsgs.herokuapp.com/viewmessages?id="+ID;
+  
+  
+    let nowdate=new Date();
+    var hours = nowdate.getHours()
+var minutes = nowdate.getMinutes()
+
+   // console.log("date ",nowdate,"hrs : ",hours,minutes);
+    var time=hours+":"+minutes+":"+nowdate.getSeconds();
   if(out.length==0){
     let data = {};
     data.ID = ID;
     data.UserID = ID;
+    data.Time=time;
     data.Password=ID[0]+ID[2]+user_name+ID[3];
     data.Message=[];
 
@@ -31,6 +44,7 @@ let out=[];
       
         messagedata:[],
         date:nowdate+"",
+        time:"00:00",
         URLFORM:URL_ID,
         URLFORM2:URL_USER  
             
@@ -39,14 +53,14 @@ let out=[];
   }
   else{
     //res.json("already there");
-console.log("heyy?>>>>>")
 
 let data=await User.find({"ID":ID});
-console.log(data[0].Messages);
+console.log("here",data[0].Time)
 res.render("ok",{
   messagedata:data[0].Messages,
    
   date:data[0].Date,
+  time:data[0].Time,
   URLFORM:URL_ID,
   URLFORM2:URL_USER 
       
@@ -108,9 +122,13 @@ route.get('/viewmessages', async (req, res) => {
   let ID=req.query.id;
 let out=[];
 
-let URL_ID="http://localhost:3000/sendmessage?id="+ID;
-let URL_USER="http://localhost:3000/viewmessages?id="+ID;
-  let nowdate=new Date();
+//let URL_ID="http://localhost:3000/sendmessage?id="+ID;
+//let URL_USER="http://localhost:3000/viewmessages?id="+ID;
+  
+let URL_ID="https://secretmsgs.herokuapp.com/sendmessage?id="+ID;
+let URL_USER="https://secretmsgs.herokuapp.com/viewmessages?id="+ID;
+
+let nowdate=new Date();
   
   
 let data=await User.find({"ID":ID});
@@ -121,6 +139,7 @@ res.render("ok",{
   messagedata:data[0].Messages,
    
   date:data[0].Date,
+  time:data[0].Time,
   URLFORM:URL_ID,
   URLFORM2:URL_USER
   });

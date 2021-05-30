@@ -16,6 +16,9 @@ const data = new mongoose.Schema({
   Date:{
     type:Date,
     default:Date.now
+  },
+  Time:{
+    type:String
   }
 });
 
