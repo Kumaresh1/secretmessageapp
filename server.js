@@ -18,7 +18,8 @@ app.get('/',(req,res)=>
 {
     
     res.render('index',{
-        gid:cid
+        gid:cid,
+        withoutid:"http://localhost:3000/viewmessages?id="
     })
 })
 

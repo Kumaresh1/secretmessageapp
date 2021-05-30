@@ -20,6 +20,22 @@
         document.getElementById("sent").style.display="none";
      }, 3000);
     
+     function getCookie(cname) {
+
+console.log(document.cookie.slice(3,11));
+if(document.cookie.length>5){
+ 
+ //var copyText = document.getElementById("linkwithid");
+
+window.location.href = "<%=withoutid%>"+document.cookie.slice(3,11);
+}
+}
+
+setTimeout(function(){ 
+getCookie();
+}, 500);
+
+
       </script>
   <body>
   

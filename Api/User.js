@@ -21,6 +21,7 @@ var minutesIST = ISTTime.getMinutes()
 console.log(ISTTime,ISTTime.getHours());
 
 var ist_time=hoursIST+":"+minutesIST+":"+ISTTime.getSeconds();
+
 route.post('/getmessage', async (req, res) => {
 
   console.log("Name : ",req.body.Name);
@@ -61,7 +62,9 @@ var minutes = nowdate.getMinutes()
         date:nowdate+"",
         time:"00:00",
         URLFORM:URL_ID,
-        URLFORM2:URL_USER  
+        URLFORM2:URL_USER  ,
+        UID:ID+"",
+        withoutid:"http://localhost:3000/viewmessages?id="
             
         
     });
@@ -70,14 +73,18 @@ var minutes = nowdate.getMinutes()
     //res.json("already there");
 
 let data=await User.find({"ID":ID});
-console.log("here",data[0].Time)
+console.log("here",data[0].Messages)
+
 res.render("ok",{
   messagedata:data[0].Messages,
    
   date:data[0].Date,
   time:data[0].Time,
   URLFORM:URL_ID,
-  URLFORM2:URL_USER 
+  URLFORM2:URL_USER ,
+  UID:ID+"",
+  withoutid:"http://localhost:3000/viewmessages?id="
+  
       
   });
 }
@@ -97,7 +104,10 @@ console.log("data :: ");
   var myquery = data[0];
   var newvalues = { $addToSet: {
       Messages:{a:message,
-        Date:nowdate+""
+        Date:nowdate+"",
+        MTime:ist_time,
+        withoutid:"http://localhost:3000/viewmessages?id=",
+      
       }
       
       
@@ -111,7 +121,9 @@ console.log("data :: ");
   });
 
   res.render("aftermessage",{
-    gid:customId({})
+    gid:customId({}),
+    withoutid:"http://localhost:3000/viewmessages?id=",
+    UID:ID
   });
 });
 
@@ -123,7 +135,8 @@ route.get('/sendmessage', async (req, res) => {
   
 res.render("send",{
   IDURL:req.query.id,
-  message:req.query
+  message:req.query,
+  withoutid:"http://localhost:3000/viewmessages?id="
  
 });  
 });
@@ -150,13 +163,15 @@ let data=await User.find({"ID":ID});
 
 console.log(data[0].Messages);
 
-res.render("ok",{
+res.render("viewmsgs",{
   messagedata:data[0].Messages,
    
   date:data[0].Date,
   time:data[0].Time,
   URLFORM:URL_ID,
-  URLFORM2:URL_USER
+  URLFORM2:URL_USER,
+  UID:ID,
+  withoutid:"http://localhost:3000/viewmessages?id="
   });
 
   
