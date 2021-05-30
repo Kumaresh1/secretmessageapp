@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Message</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+<script>
+
+function myFunction() {
+  var copyText = document.getElementById("linkwithid");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  document.execCommand("copy");
+
+  
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
+  <body>
+  
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-md">
+          <a class="navbar-brand" href="#">Navbar</a>
+
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Login</a>
+  </li>
+  <li class="nav-item">
+    <a class=" btn " href="#">Signup</a>
+  </li>
+ 
+</ul>
+
+
+        </div>
+      </nav>
+      <br>
+      <div class="container-md" style="box-shadow:3px 3px 5px 6px #ccc;width:22rem;">
+       <div style="text-align: center;">
+        <h2>Secret Message </h2>
+        <br>
+        <p>Share this link with your friends and collect exciting Anonymous Messages
+        </p>
+    </div>
+    
+    <div >
+        <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" id="linkwithid" aria-describedby="emailHelp"
+              value="<%=URLFORM%>">
+             
+            </div>
+            <div class="d-grid gap-2 ">
+                <button type="button" onclick="myFunction()" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-copy"></i>Click to Copy</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-whatsapp"></i>Share to Whatsapp</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block lessfont"><i class="fa fa-facebook"></i>Share to facebook</button>
+
+                </div>
+<br>
+          </form>
+    </div>
+    <div style="text-align: center;">
+        <a type="button" href="#messages" class="btn btn-secondary btn-lg " style="font-size: 17px;padding-left: 80px;padding-right: 80px;">
+          Go to Messages</a>
+
+
+
+
+    </div>
+
+    <div>
+      <br>
+<p>Use this Link to view your messages later</p>
+      <input type="text" class="form-control" id="linkuser" aria-describedby="emailHelp"
+      value="<%=URLFORM2%>">
+
+    </div>
+    <br>      </div>
+      <br><br><br>
+
+
+      <div class="container-md" id="messages" style="box-shadow:3px 3px 5px 6px #ccc;width:22rem;    word-wrap: break-word;
+      ">
+
+<h3>Anonymous Messages</h3><br>
+<% messagedata.forEach(function(message) { %>
+         
+        <div class="list-group">
+
+               
+              
+
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">    </h5>
+                <small><%= message.Date.slice(4,24) %></small>
+              </div>
+              <span class="mb-1">
+                <%= message.a %>
+              </span>
+              
+            </a>
+
+            
+<br>                      </div>
+
+<% }); %>
+      </div>
+      
+      
+      <div class="container-fluid">
+<br>
+<h6 style="text-align: center;">@2021 Copyrights reserved</h6>
+
+      </div>
+</body>
+<style>
+   
+    .lessfont{
+        font-size: 15px;
+    }
+
+    .lessfont i{
+        float:left;
+    
+        font-size: 20px;
+    }
+</style>
+</html>
