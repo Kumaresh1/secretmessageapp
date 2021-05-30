@@ -64,7 +64,7 @@ var minutes = nowdate.getMinutes()
         URLFORM:URL_ID,
         URLFORM2:URL_USER  ,
         UID:ID+"",
-        withoutid:"http://localhost:3000/viewmessages?id="
+        withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id="
             
         
     });
@@ -83,7 +83,7 @@ res.render("ok",{
   URLFORM:URL_ID,
   URLFORM2:URL_USER ,
   UID:ID+"",
-  withoutid:"http://localhost:3000/viewmessages?id="
+  withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id="
   
       
   });
@@ -106,7 +106,7 @@ console.log("data :: ");
       Messages:{a:message,
         Date:nowdate+"",
         MTime:ist_time,
-        withoutid:"http://localhost:3000/viewmessages?id=",
+        withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id=",
       
       }
       
@@ -122,7 +122,7 @@ console.log("data :: ");
 
   res.render("aftermessage",{
     gid:customId({}),
-    withoutid:"http://localhost:3000/viewmessages?id=",
+    withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id=",
     UID:ID
   });
 });
@@ -136,7 +136,7 @@ route.get('/sendmessage', async (req, res) => {
 res.render("send",{
   IDURL:req.query.id,
   message:req.query,
-  withoutid:"http://localhost:3000/viewmessages?id="
+  withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id="
  
 });  
 });
@@ -171,7 +171,7 @@ res.render("viewmsgs",{
   URLFORM:URL_ID,
   URLFORM2:URL_USER,
   UID:ID,
-  withoutid:"http://localhost:3000/viewmessages?id="
+  withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id="
   });
 
   
