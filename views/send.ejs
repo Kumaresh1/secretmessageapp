@@ -15,15 +15,24 @@
 function getCookie(cname) {
 
 console.log(document.cookie.slice(3,11));
+
+var queryid="<%=IDURL%>";
+var cookieid=document.cookie.slice(3,11);
+console.log(queryid,":",cookieid)
+if(queryid==cookieid){
+  window.location.href = "<%=withoutid%>"+document.cookie.slice(3,11);
+
+}
+
 if(document.cookie.length>5){
  
  //var copyText = document.getElementById("linkwithid");
 
-window.location.href = "<%=withoutid%>"+document.cookie.slice(3,11);
+//window.location.href = "<%=withoutid%>"+document.cookie.slice(3,11);
 }
 }
 
-
+getCookie();
 
   </script>
 <body>
