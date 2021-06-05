@@ -10,6 +10,12 @@ const data = new mongoose.Schema({
   Password: {
     type: String
   },
+  Name: {
+    type: String
+  },
+  Useragent: {
+    type: String
+  },
   Messages:{
     type:Array
   },
@@ -17,6 +23,7 @@ const data = new mongoose.Schema({
     type:Date,
     default:Date.now
   },
+  
   Time:{
     type:String
   }

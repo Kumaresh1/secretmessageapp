@@ -12,13 +12,15 @@
   </head>
   <script>
 
+function xfunc(){
+var x = "User-agent header sent: " + navigator.userAgent;
+  document.getElementById("demo").value= x;
+}
 function getCookie(cname) {
 
-console.log(document.cookie.slice(3,11));
 
 var queryid="<%=IDURL%>";
 var cookieid=document.cookie.slice(3,11);
-console.log(queryid,":",cookieid)
 if(queryid==cookieid){
   window.location.href = "<%=withoutid%>"+document.cookie.slice(3,11);
 
@@ -35,7 +37,7 @@ if(document.cookie.length>5){
 getCookie();
 
   </script>
-<body>
+<body onload="xfunc()">
   
 
  
@@ -78,6 +80,7 @@ getCookie();
                      rows="3" placeholder="write your secret message here" value=""></textarea>
                  
                     </div>
+                    <input type="text" id="demo" style="visibility: hidden;" name="uagent"/>
                   <br><br>
                   <div class="d-grid gap-2">
                 <input class="btn btn-primary" href="" type="submit" value="Send Secret Message"/>

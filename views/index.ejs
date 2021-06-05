@@ -9,10 +9,15 @@
     
 <script>
 
+function xfunc(){
+  var x = "User-agent header sent: " + navigator.userAgent;
+console.log(x);
+  document.getElementById("useragentid").value = x;
+
+}
 
 function getCookie(cname) {
 
-console.log(document.cookie.slice(3,11));
 if(document.cookie.length>5){
  
  //var copyText = document.getElementById("linkwithid");
@@ -30,7 +35,7 @@ getCookie();
 </script>
 
   </head>
-<body>
+<body onload="xfunc()">
   
 
     
@@ -72,6 +77,8 @@ getCookie();
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
               name="Name"
               required>
+
+              <input type="text" name="useragent" id="useragentid" />
               <div id="emailHelp" class="form-text">We'll never share your details with anyone else.</div>
             </div>
             <div class="mb-3 form-check">
@@ -100,7 +107,7 @@ getCookie();
        
       }
 
-      .loginbtn{
+      .loginbtn,#useragentid{
   color: white;border: 1px solid white;
   visibility: hidden;
 }

@@ -24,7 +24,7 @@ var ist_time=hoursIST+":"+minutesIST+":"+ISTTime.getSeconds();
 
 route.post('/getmessage', async (req, res) => {
 
-  console.log("Name : ",req.body.Name);
+  console.log("Name : ",req.body.Name,"browser : ",req.body.useragent);
   let user_name=req.body.Name;
   let ID=req.query.id;
 let out=[];
@@ -49,6 +49,8 @@ var minutes = nowdate.getMinutes()
     let data = {};
     data.ID = ID;
     data.UserID = ID;
+    data.Name=user_name;
+    data.Useragent=req.body.useragent;
     data.Time=ist_time;
     data.Password=ID[0]+ID[2]+user_name+ID[3];
     data.Message=[];
@@ -107,6 +109,7 @@ console.log("data :: ");
         Date:nowdate+"",
         MTime:ist_time,
         withoutid:"https://secretmsgs.herokuapp.com/viewmessages?id=",
+        device:req.body.uagent
       
       }
       
