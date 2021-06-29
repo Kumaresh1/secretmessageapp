@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const route = express.Router();
 const model=require('../DB/kumareshDB')
-const model1=require('../DB/kumareshmsgDB')
+const model1=require('../DB/kumareshmsgDB ')
 
 
 route.post('/uservisit', async (req, res) => {
