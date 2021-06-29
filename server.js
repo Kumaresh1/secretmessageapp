@@ -14,6 +14,7 @@ var customId = require("custom-id");
 let cid=customId({});
 //console.log(customId({}));
 app.use('/', require('./Api/User'));
+app.use('/portfolio', require('./Api/kumaresh'));
 app.get('/',(req,res)=>
 {
     
