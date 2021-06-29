@@ -13,6 +13,12 @@ var customId = require("custom-id");
 
 let cid=customId({});
 //console.log(customId({}));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use('/', require('./Api/User'));
 app.use('/portfolio', require('./Api/kumaresh'));
 app.get('/',(req,res)=>
