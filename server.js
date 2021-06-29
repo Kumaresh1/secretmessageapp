@@ -1,7 +1,9 @@
 const express = require('express');
 const connectDB = require('./DB/Conncection');
 const app = express();
+var cors = require('cors');
 
+app.use(cors());
 
 connectDB();
 app.use(express.json({ extended: false }));
@@ -30,7 +32,7 @@ app.get('/',(req,res)=>
     })
 })
 
-const Port = process.env.PORT || 3000;
+const Port = process.env.PORT || 3001;
 
 
 
