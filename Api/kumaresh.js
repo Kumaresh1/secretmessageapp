@@ -1,15 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const route = express.Router();
-const data=require('../DB/kumareshDB')
+const model=require('../DB/kumareshDB')
 
 route.post('/uservisit', async (req, res) => {
 
-
-  data.save({
-    ip:req.ip,
-    device:req.headers['user-agent']
-  })
+let data=new model({
+  ip:req.ip,
+  device:req.headers['user-agent']
+})
+ await data.save()
   .then(result=>{
     console.log(result);
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,11 +32,12 @@ route.post('/uservisit', async (req, res) => {
 route.post('/message', async (req, res) => {
 
 
-  data.save({
+  let data = new model({
     ip:req.ip,
     device:req.headers['user-agent'],
     message:req.body.message
   })
+ await data.save()
   .then(result=>{
 
     console.log(result);
