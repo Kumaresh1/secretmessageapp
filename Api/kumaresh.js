@@ -12,10 +12,18 @@ route.post('/uservisit', async (req, res) => {
   })
   .then(result=>{
     console.log(result);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
+    res.json(result);
 
   })
   .catch(err=>{
+    res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
+
+    res.json(err);
   })
 
 });
@@ -30,10 +38,18 @@ route.post('/message', async (req, res) => {
     message:req.body.message
   })
   .then(result=>{
+    res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     console.log(result);
+    res.json(result)
 
   })
   .catch(err=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
+    res.json(err)
 
   })
 
