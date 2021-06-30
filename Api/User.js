@@ -181,6 +181,14 @@ res.render("viewmsgs",{
 });
 
 
+route.get('/favicon.ico', async (req, res) => {
+
+  res.sendFile(__dirname+"/favicon.ico")
+
+
+});
+
+
 
 
 module.exports = route;
